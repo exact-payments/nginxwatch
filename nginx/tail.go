@@ -93,6 +93,7 @@ func (data *nginxData) registerHit(line nginxLogLine) {
 	sort.Float64s(tts)
 	index := int(float64(len(data.times)) * 0.95)
 	data.nineTime = data.times[index]
+
 }
 
 func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string) {
