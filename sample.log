@@ -1,0 +1,45 @@
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.105	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.007	ssl:TLSv1.2	uri:/flows/3f765ce3bc77814859f3db9b48774ca4/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.041	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:36-04:00	host:qa-api.telemetryapp.com	upstream:qa-api	status:200	time:0.035	ssl:TLSv1.2	uri:/flows/pagg_total/data	agent:Telemetry Ruby Gem (1.5.7)
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.120	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.153	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.016	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:36-04:00	host:qa-api.telemetryapp.com	upstream:qa-api	status:200	time:0.036	ssl:TLSv1.2	uri:/flows/pagg_latest/data	agent:Telemetry Ruby Gem (1.5.7)
+time:2015-05-16T13:01:36-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.007	ssl:TLSv1.2	uri:/flows/8689ceee9408b799cb663c1aa653f951/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:37-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.105	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:37-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.050	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:37-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.040	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.7)
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.039	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.044	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.009	ssl:TLSv1.2	uri:/flows/69da900892e417c9a669a9807f9ab372/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.008	ssl:TLSv1.2	uri:/flows/aee034563f055e9c8bb153321a31135d/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.036	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:38-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.110	ssl:TLSv1.2	uri:/data	agent:PHP Telemetry Library v.0.6.0
+time:2015-05-16T13:01:39-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.021	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:39-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.104	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:39-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.053	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:39-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.020	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:40-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.005	ssl:TLSv1.2	uri:/flows/0c80938d904f803b25b085dfe5e281f7/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:40-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.005	ssl:TLSv1.2	uri:/flows/e2a6e297a5b796a5ed63f015294e2920/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:40-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.053	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:40-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.043	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.040	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.105	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.152	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.043	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.019	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:41-04:00	host:boards.telemetryapp.com	upstream:static	status:200	time:0.002	ssl:TLSv1	uri:/	agent:Pingdom.com_bot_version_1.4_(http://www.pingdom.com/)
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.003	ssl:TLSv1.2	uri:/accounts/usage	agent:Ruby
+time:2015-05-16T13:01:41-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.003	ssl:TLSv1.2	uri:/accounts/viewers	agent:Ruby
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.007	ssl:TLSv1.2	uri:/flows/8689ceee9408b799cb663c1aa653f951/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.028	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.044	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.006	ssl:TLSv1.2	uri:/flows/972fbd17ce50f94e7ed373a271d709e4/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.029	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.023	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:42-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.019	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:43-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.026	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:43-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.049	ssl:TLSv1.2	uri:/data	agent:Telemetry Ruby Gem (1.5.6)
+time:2015-05-16T13:01:43-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.032	ssl:TLSv1.2	uri:/data	agent:Go 1.1 package http
+time:2015-05-16T13:01:44-04:00	host:api.telemetryapp.com	upstream:api	status:200	time:0.007	ssl:TLSv1.2	uri:/flows/e9b824ab6673644a05b45aa8bda67ab8/data	agent:Go 1.1 package http
