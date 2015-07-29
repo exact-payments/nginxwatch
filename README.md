@@ -41,16 +41,16 @@ Where interval is the seconds between submissions.  nginxwatch will send 8 point
 
 By default the report will spit out something like the following (you can see the output by using the debug flag -d):
 
-  2015/07/29 17:25:05 proxy-1.telemetryapp.com.nine: 0.402
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.rps: 5.5
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.normal: 85
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.warn: 1
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.error: 0
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.min: 0.013
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.max: 2.591
-  2015/07/29 17:25:15 proxy-1.telemetryapp.com.avg: 0.11638297872340424
+    2015/07/29 17:25:05 proxy-1.telemetryapp.com.nine: 0.402
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.rps: 5.5
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.normal: 85
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.warn: 1
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.error: 0
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.min: 0.013
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.max: 2.591
+    2015/07/29 17:25:15 proxy-1.telemetryapp.com.avg: 0.11638297872340424
 
-nine, min, max, avg are the ninety-fifth percentile, minimum, maximum and average response times.  rps is the requests per second.  normal, warn and error are the hit counts of the normal (http 2xx), warning (http 4xx) and error (http 5xx) http codes. 
+nine, min, max, avg are the ninety-fifth percentile, minimum, maximum and average response times.  rps is the requests per second.  normal, warn and error are the hit counts of the normal (http 2xx), warning (http 4xx) and error (http 5xx) http codes.
 
 # Optional Additional Reports
 
