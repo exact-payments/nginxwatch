@@ -66,6 +66,13 @@ You can configure nginxwatch to also watch for specific variables in the logfile
 
 Where label is what Graphite will see.  Upstream is the optional nginx upstream to match.  Host is the optional virtual host to match.  Statuses are an optional array of statuses to match.  Methods are an optional array of methods to match.  URI_Regex is an optional regex to match against the URI.
 
+# Telemetry ASL Example
+
+In order to process this you'll want to write an ASL script in the Telemetry Agent.   An Example script to extract the requests per second would be as follows:
+
+  $rps = series("nginx.telemetryapp.com.rps").last()
+  number = {value: $rps}
+
 # Building
 
 nginxwatch is written in Go.  In order to build you'll need to have a working Go environment.  Typically we cross compile
