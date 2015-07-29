@@ -2,7 +2,6 @@ package nginx
 
 import (
 	"fmt"
-	"github.com/ActiveState/tail"
 	"log"
 	"net"
 	"regexp"
@@ -10,9 +9,11 @@ import (
 	"strconv"
 	"sync"
 	"time"
+
+	"github.com/ActiveState/tail"
 )
 
-var counter uint64 = 0
+var counter uint64
 
 var (
 	statusRegex   = regexp.MustCompile(`\s+status:([^\s\\]*)`)
@@ -96,7 +97,8 @@ func (data *nginxData) registerHit(line nginxLogLine) {
 
 }
 
-func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string) {
+// TailNginx tails a specified file with a specified report
+func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, debug bool) {
 
 	var uriReportRegex *regexp.Regexp
 	if len(report.UriRegex) > 0 {
@@ -112,16 +114,21 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string) {
 
 	seek := &tail.SeekInfo{0, 2}
 
-	if conn, addr, err := connectToGraphite(graphite.Server); err == nil {
-		duration := time.Duration(graphite.Interval) * time.Second
-		label := hostname
-		if report.Label != "" {
-			label = fmt.Sprintf("%v.%v", hostname, report.Label)
-		}
-		go sendAtInterval(duration, label, conn, addr, data, mutex)
+	label := hostname
+	duration := time.Duration(graphite.Interval) * time.Second
 
+	if !debug {
+		if conn, addr, err := connectToGraphite(graphite.Server); err == nil {
+			if report.Label != "" {
+				label = fmt.Sprintf("%v.%v", hostname, report.Label)
+			}
+			go sendAtInterval(duration, label, conn, addr, data, mutex)
+
+		} else {
+			log.Panicf("Error connecting to Graphite server: %v", err)
+		}
 	} else {
-		log.Panicf("Error connecting to Graphite server: %v", err)
+		go debugLog(duration, label, data, mutex)
 	}
 
 	for {
@@ -216,7 +223,12 @@ func sendAtInterval(interval time.Duration, label string, conn *net.UDPConn, add
 		time.Sleep(interval)
 		mutex.Lock()
 
-		rps := float64(data.hits) / interval.Seconds()
+		var rps float64
+		if data.hits > 0 {
+			rps = float64(data.hits) / interval.Seconds()
+		} else {
+			rps = 0
+		}
 
 		writeData(fmt.Sprintf("%v.rps", label), rps, conn, addr)
 		writeData(fmt.Sprintf("%v.normal", label), float64(data.percentNormal), conn, addr)
@@ -226,6 +238,32 @@ func sendAtInterval(interval time.Duration, label string, conn *net.UDPConn, add
 		writeData(fmt.Sprintf("%v.max", label), data.maxTime, conn, addr)
 		writeData(fmt.Sprintf("%v.avg", label), data.avgTime, conn, addr)
 		writeData(fmt.Sprintf("%v.nine", label), data.nineTime, conn, addr)
+
+		data.reset()
+		mutex.Unlock()
+	}
+}
+
+func debugLog(interval time.Duration, label string, data *nginxData, mutex *sync.Mutex) {
+	for {
+		time.Sleep(interval)
+		mutex.Lock()
+
+		var rps float64
+		if data.hits > 0 {
+			rps = float64(data.hits) / interval.Seconds()
+		} else {
+			rps = 0
+		}
+
+		log.Printf("%v.rps: %v", label, rps)
+		log.Printf("%v.normal: %v", label, float64(data.percentNormal))
+		log.Printf("%v.warn: %v", label, float64(data.percentWarn))
+		log.Printf("%v.error: %v", label, float64(data.percentError))
+		log.Printf("%v.min: %v", label, data.minTime)
+		log.Printf("%v.max: %v", label, data.maxTime)
+		log.Printf("%v.avg: %v", label, data.avgTime)
+		log.Printf("%v.nine: %v", label, data.nineTime)
 
 		data.reset()
 		mutex.Unlock()
