@@ -3,6 +3,7 @@ package nginx
 import (
 	"fmt"
 	"log"
+	"math"
 	"net"
 	"regexp"
 	"sort"
@@ -67,6 +68,15 @@ func (data *nginxData) reset() {
 	data.times = []float64{}
 }
 
+func round(num float64) int {
+	return int(num + math.Copysign(0.5, num))
+}
+
+func toFixed(num float64, precision int) float64 {
+	output := math.Pow(10, float64(precision))
+	return float64(round(num*output)) / output
+}
+
 func (data *nginxData) registerHit(line nginxLogLine) {
 	data.hits++
 	if line.status >= 500 {
@@ -88,7 +98,7 @@ func (data *nginxData) registerHit(line nginxLogLine) {
 		data.maxTime = line.time
 	}
 	data.totalTime += line.time
-	data.avgTime = data.totalTime / float64(data.countNormal)
+	data.avgTime = toFixed(data.totalTime/float64(data.countNormal), 2)
 	data.times = append(data.times, line.time)
 	tts := data.times[:]
 	sort.Float64s(tts)
