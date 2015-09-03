@@ -10,5 +10,5 @@ label = 'api'
 upstream = 'api'
 host = 'api.telemetryapp.com'
 statuses = [200, 201, 400, 500, 502, 503]
-methods = ['POST']
+methods = ["POST"]
 uri_regex = ''

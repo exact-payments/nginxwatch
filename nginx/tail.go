@@ -153,7 +153,10 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 						log.Printf("Skipping host mismatched line: %v -> %v", line.host, report.Host)
 					}
 					continue
-				} else if len(report.Statuses) > 0 {
+
+				}
+
+				if len(report.Statuses) > 0 {
 					found := false
 					for _, s := range report.Statuses {
 						if line.status == s {
@@ -166,7 +169,9 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 						}
 						continue
 					}
-				} else if len(report.Methods) > 0 {
+				}
+
+				if len(report.Methods) > 0 {
 					found := false
 					for _, m := range report.Methods {
 						if line.method == m {
@@ -179,12 +184,16 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 						}
 						continue
 					}
-				} else if report.Upstream != "" && line.upstream != report.Upstream {
+				}
+
+				if report.Upstream != "" && line.upstream != report.Upstream {
 					if debug {
 						log.Printf("Skipping upstream mismatched line: %v -> %v", line.upstream, report.Upstream)
 					}
 					continue
-				} else if report.UriRegex != "" {
+				}
+
+				if report.UriRegex != "" {
 					if !uriReportRegex.MatchString(line.uri) {
 						if debug {
 							log.Printf("Skipping regex mismatched line: %v -> %v", line.uri, report.UriRegex)
