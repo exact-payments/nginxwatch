@@ -1,5 +1,5 @@
 [nginx]
-logfile = '/var/log/nginx/status.log'
+logfile = '/var/log/nginx/stats.log'
 
 [graphite]
 server = 'localhost:8999'
@@ -9,6 +9,6 @@ interval = 10
 label = 'api'
 upstream = 'api'
 host = 'api.telemetryapp.com'
-statuses = [200, 201]
-methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE']
+statuses = [200, 201, 400, 500, 502, 503]
+methods = ['POST']
 uri_regex = ''

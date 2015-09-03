@@ -12,6 +12,7 @@ import (
 var (
 	configFile = kingpin.Flag("config", "Filename for the config file").Required().Short('c').ExistingFile()
 	debug      = kingpin.Flag("debug", "Enable debug mode, prints to std out").Short('d').Bool()
+	extended   = kingpin.Flag("extended", "Disable base report, extended reports only").Short('e').Bool()
 )
 
 func main() {
@@ -29,8 +30,10 @@ func main() {
 	var wg sync.WaitGroup
 
 	// Global Report
-	go nginx.TailNginx(config.Nginx, config.Graphite, nginx.Report{}, hostname, *debug)
-	wg.Add(1)
+	if *extended == false {
+		go nginx.TailNginx(config.Nginx, config.Graphite, nginx.Report{}, hostname, *debug)
+		wg.Add(1)
+	}
 
 	// Specific Optional Reports
 	for _, report := range config.Reports {

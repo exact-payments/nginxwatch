@@ -21,7 +21,7 @@ var (
 	timeRegex     = regexp.MustCompile(`\s+time:([^\s\\]*)`)
 	sslRegex      = regexp.MustCompile(`\s+ssl:([^\s\\]*)`)
 	methodRegex   = regexp.MustCompile(`\s+method:([^\s\\]*)`)
-	hostRegex     = regexp.MustCompile(`\s+host:([^\s\\]*)`)
+	hostRegex     = regexp.MustCompile(`\s*host:([^\s\\]*)`)
 	upstreamRegex = regexp.MustCompile(`\s+upstream:([^\s\\]*)`)
 	uriRegex      = regexp.MustCompile(`\s+uri:([^\s\\]*)`)
 )
@@ -78,6 +78,7 @@ func toFixed(num float64, precision int) float64 {
 }
 
 func (data *nginxData) registerHit(line nginxLogLine) {
+
 	data.hits++
 	if line.status >= 500 {
 		data.countError++
@@ -125,13 +126,13 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 	seek := &tail.SeekInfo{0, 2}
 
 	label := hostname
+	if report.Label != "" {
+		label = fmt.Sprintf("%v.%v", hostname, report.Label)
+	}
 	duration := time.Duration(graphite.Interval) * time.Second
 
 	if !debug {
 		if conn, addr, err := connectToGraphite(graphite.Server); err == nil {
-			if report.Label != "" {
-				label = fmt.Sprintf("%v.%v", hostname, report.Label)
-			}
 			go sendAtInterval(duration, label, conn, addr, data, mutex)
 
 		} else {
@@ -148,6 +149,9 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 
 				// Filter out by report parameters
 				if report.Host != "" && line.host != report.Host {
+					if debug {
+						log.Printf("Skipping host mismatched line: %v -> %v", line.host, report.Host)
+					}
 					continue
 				} else if len(report.Statuses) > 0 {
 					found := false
@@ -157,6 +161,9 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 						}
 					}
 					if !found {
+						if debug {
+							log.Printf("Skipping status mismatched line: %v -> %v", line.status, report.Statuses)
+						}
 						continue
 					}
 				} else if len(report.Methods) > 0 {
@@ -167,14 +174,21 @@ func TailNginx(nginx Nginx, graphite Graphite, report Report, hostname string, d
 						}
 					}
 					if !found {
+						if debug {
+							log.Printf("Skipping methods mismatched line: %v -> %v", line.method, report.Methods)
+						}
 						continue
 					}
 				} else if report.Upstream != "" && line.upstream != report.Upstream {
-					continue
-				} else if report.Upstream != "" && line.upstream != report.Upstream {
+					if debug {
+						log.Printf("Skipping upstream mismatched line: %v -> %v", line.upstream, report.Upstream)
+					}
 					continue
 				} else if report.UriRegex != "" {
 					if !uriReportRegex.MatchString(line.uri) {
+						if debug {
+							log.Printf("Skipping regex mismatched line: %v -> %v", line.uri, report.UriRegex)
+						}
 						continue
 					}
 				}
